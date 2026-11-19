@@ -4,14 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-class HealthCheckTest {
-
-    private static final String BASE_URL = "https://restful-booker.herokuapp.com";
+class HealthCheckTest extends BaseApiTest {
 
     @Test
     void apiIsUp() {
         given()
-            .baseUri(BASE_URL)
+            .spec(spec)
         .when()
             .get("/ping")
         .then()

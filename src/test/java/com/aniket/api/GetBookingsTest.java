@@ -4,14 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-class GetBookingsTest {
-
-    private static final String BASE_URL = "https://restful-booker.herokuapp.com";
+class GetBookingsTest extends BaseApiTest {
 
     @Test
     void returnsListOfBookings() {
         given()
-            .baseUri(BASE_URL)
+            .spec(spec)
         .when()
             .get("/booking")
         .then()
@@ -21,7 +19,7 @@ class GetBookingsTest {
     @Test
     void returnsJson() {
         given()
-            .baseUri(BASE_URL)
+            .spec(spec)
         .when()
             .get("/booking")
         .then()

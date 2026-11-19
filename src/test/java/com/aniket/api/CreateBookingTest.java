@@ -6,9 +6,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
-class CreateBookingTest {
-
-    private static final String BASE_URL = "https://restful-booker.herokuapp.com";
+class CreateBookingTest extends BaseApiTest {
 
     @Test
     void createsBookingAndReturnsSameDetails() {
@@ -27,9 +25,7 @@ class CreateBookingTest {
             """;
 
         given()
-            .baseUri(BASE_URL)
-            .contentType("application/json")
-            .accept("application/json")
+            .spec(spec)
             .body(newBooking)
         .when()
             .post("/booking")
