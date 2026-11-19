@@ -17,4 +17,15 @@ class GetBookingsTest {
         .then()
             .statusCode(200);
     }
+
+    @Test
+    void returnsJson() {
+        given()
+            .baseUri(BASE_URL)
+        .when()
+            .get("/booking")
+        .then()
+            .statusCode(200)
+            .contentType("application/json; charset=utf-8");
+    }
 }
