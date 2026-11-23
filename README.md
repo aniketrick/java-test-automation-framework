@@ -12,6 +12,7 @@ Automated tests in Java for the [Restful Booker](https://restful-booker.herokuap
 | `GetBookingsTest` | Listing bookings returns 200 and JSON |
 | `CreateBookingTest` | A new booking is saved with exactly the details sent |
 | `BookingLifecycleTest` | Log in, update and delete a booking, and confirm an update without a token is refused (403) |
+| `LoginTest` (UI) | Valid login shows products, locked-out user sees an error, adding an item updates the cart |
 
 ## How it's built
 
@@ -20,6 +21,7 @@ Automated tests in Java for the [Restful Booker](https://restful-booker.herokuap
 - **Each test logs in and creates its own booking** in `@BeforeEach`, so tests don't depend on each other
 - **The base URL can be changed without touching code:** `mvn test -DbaseUrl=https://other-environment`
 - **GitHub Actions** runs the suite on every push and pull request, and uploads the test reports even when tests fail
+- **Selenium with page objects** (`LoginPage`, `InventoryPage`) and explicit waits. Chrome's password pop-ups are switched off so they can't block clicks
 
 ## Run it locally
 
@@ -29,6 +31,5 @@ mvn test
 
 ## Coming next
 
-- Selenium UI tests using page objects
 - Allure test reports
 - A small load test (k6) and an accessibility check (axe)
